@@ -10,3 +10,8 @@ venv/
 assets/*.png
 assets/*.webp
 assets/*.gif
+
+# Modelos e caches baixados (ficam só no seu PC)
+models/
+ollama_models/
+.pipcache/

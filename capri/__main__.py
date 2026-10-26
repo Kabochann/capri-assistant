@@ -3,9 +3,10 @@
 from __future__ import annotations
 
 import argparse
+import os
 
 from .assistant import Assistant
-from .config import load_config
+from .config import ROOT, load_config
 
 
 def run_terminal(cfg: dict) -> None:
@@ -49,6 +50,11 @@ def main() -> None:
     parser.add_argument("--config", help="caminho de um config.toml alternativo")
     parser.add_argument("--texto", action="store_true", help="modo terminal, sem janela")
     args = parser.parse_args()
+
+    # O modelo de voz (Whisper) é baixado para dentro da pasta do projeto, e não para
+    # C:\Users\...\.cache. Assim tudo fica no disco onde você instalou a Capri.
+    os.environ.setdefault("HF_HOME", str(ROOT / "models" / "huggingface"))
+
     cfg = load_config(args.config)
 
     if args.texto:

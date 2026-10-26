@@ -19,6 +19,10 @@ Assistente virtual **local** para Windows, feito por fã: conversa por **voz e t
 3. Baixe este repositório e dê dois cliques em **`setup_windows.bat`**. Ele cria o ambiente, instala as dependências e baixa o modelo (~5 GB, só na primeira vez).
 4. Dê dois cliques em **`run.bat`**.
 
+### Instalar em outro disco (ex.: G:)
+
+Extraia ou clone o projeto direto no disco desejado (ex.: `G:\Capri\capri-assistant`) e rode o `setup_windows.bat` de lá. O ambiente Python (`.venv`), o modelo de voz (`models/`) e o modelo de linguagem (`ollama_models/`) ficam dentro dessa pasta. Para o próprio programa do Ollama também sair do disco C, instale-o pelo Prompt de Comando: `OllamaSetup.exe /DIR="G:\Ollama"`.
+
 ## Como usar
 
 - **Texto:** digite na caixinha e aperte Enter.
