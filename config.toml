@@ -1,0 +1,64 @@
+# Configuração da Capri Assistant. Edite à vontade.
+
+[assistente]
+nome = "Capri"
+# "continuo": escuta o tempo todo (pausa enquanto ela fala)
+# "botao": só escuta quando você clica no botão do microfone
+modo_escuta = "botao"
+falar_respostas = true
+
+[llm]
+# Ollama precisa estar instalado e rodando: https://ollama.com/download
+url = "http://localhost:11434"
+modelo = "qwen2.5:7b-instruct"
+temperatura = 0.8
+# Contexto menor = menos VRAM. 4096 cabe folgado numa RTX 4060 (8 GB).
+num_ctx = 4096
+# Quantas mensagens antigas manter na memória da conversa
+historico_max = 16
+
+[stt]
+# Reconhecimento de voz (faster-whisper, roda local)
+modelo = "small"
+idioma = "pt"
+# "auto" tenta a placa de vídeo e cai para CPU se faltar CUDA/cuDNN
+dispositivo = "auto"
+
+[tts]
+# "edge": voz neural natural (grátis, precisa de internet)
+# "offline": voz do Windows (pyttsx3), 100% local
+motor = "edge"
+voz_edge = "pt-BR-FranciscaNeural"
+# Velocidade da fala no edge-tts, ex.: "+0%", "+10%", "-10%"
+velocidade = "+5%"
+tom = "+0Hz"
+
+[audio]
+sample_rate = 16000
+# Sensibilidade do detector de voz (menor = mais sensível)
+limiar_voz = 0.012
+# Silêncio (segundos) para considerar que você terminou de falar
+silencio_fim = 0.9
+max_gravacao = 15.0
+# Deixe vazio para usar o microfone padrão do Windows
+dispositivo_entrada = ""
+
+[janela]
+largura = 360
+altura = 520
+sempre_no_topo = true
+# Pasta com as imagens do avatar (veja assets/README.md)
+pasta_avatar = "assets"
+
+[acoes]
+# Comandos de voz/texto que mexem no PC. Desligue com false.
+habilitado = true
+
+[acoes.apps]
+# "nome falado" = "comando do Windows"
+"bloco de notas" = "notepad"
+"calculadora" = "calc"
+"navegador" = "https://www.google.com"
+"explorador" = "explorer"
+"spotify" = "spotify"
+"discord" = "discord"

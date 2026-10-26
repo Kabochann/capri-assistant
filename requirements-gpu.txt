@@ -1,0 +1,4 @@
+# Opcional: bibliotecas CUDA para o Whisper rodar na placa de vídeo (RTX 4060).
+# Se não instalar, o app cai para a CPU automaticamente (funciona, só é mais lento).
+nvidia-cublas-cu12
+nvidia-cudnn-cu12==9.*
