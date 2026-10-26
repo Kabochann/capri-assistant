@@ -20,8 +20,23 @@ if not exist .venv (
   python -m venv .venv
 )
 call .venv\Scripts\activate.bat
+python --version
+python -c "import sys; sys.exit(0 if (3,10) <= sys.version_info[:2] <= (3,12) else 1)"
+if errorlevel 1 (
+  echo.
+  echo AVISO: o recomendado e o Python 3.11 ou 3.12. Com outra versao algumas
+  echo bibliotecas podem nao ter instalador pronto e a instalacao pode falhar.
+  echo.
+)
 python -m pip install --upgrade pip
 pip install -r requirements.txt
+if errorlevel 1 (
+  echo.
+  echo ERRO: a instalacao das bibliotecas falhou. Copie as mensagens em vermelho acima
+  echo e mande para quem esta te ajudando. Nada foi instalado ainda.
+  pause
+  exit /b 1
+)
 
 echo.
 set /p GPU="Instalar bibliotecas CUDA para o reconhecimento de voz na placa de video? (s/n): "
